@@ -9,11 +9,11 @@
 #+LaTeX_HEADER: \usepackage[scaled]{helvet}
 #+LaTeX_HEADER: \usepackage{courier}
 # ------------------------------------------------------------------------------
-# HTML
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
-#+HTML_HEAD: <style>#content{max-width:1000px;}</style>
-#+HTML_HEAD: <style>p{max-width:800px;}</style>
-#+HTML_HEAD: <style>li{max-width:800px;}</style>
+# # HTML
+# #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+# #+HTML_HEAD: <style>#content{max-width:1000px;}</style>
+# #+HTML_HEAD: <style>p{max-width:800px;}</style>
+# #+HTML_HEAD: <style>li{max-width:800px;}</style>
 # ------------------------------------------------------------------------------
 * Questions
 ** Why don’t we “just” use a commercial or open-source graphics library directly?
@@ -71,9 +71,9 @@ You can set the font, text size, and the label associated with the text.
 A font is a file that handles the appearance of a group of characters in a language. Different fonts are used for different purposes as some are more pleasing to the eye than others.
 ** What is Vector\textunderscore ref for and how do we use it?
 A vector\textunderscore ref is an implementation of vector that can handle the objects of the Graphic library that a normal vector can't handle. You can use it by doing
-#+begin\textunderscore src c++
-Vector\textunderscore ref<Rectangle> vr;
-+end\textunderscore src
+#+begin_src c++
+Vector_ref<Rectangle> vr;
+#+end_src
 ** What is the difference between a Circle and an Ellipse?
 The minor and major axes of a Circle are the same and each radius cannot be changed individually. 
 ** What happens if you try to display an Image given a file name that doesn’t refer to a file containing an image?

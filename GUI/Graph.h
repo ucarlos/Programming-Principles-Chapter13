@@ -256,8 +256,8 @@ struct Text : Shape {
     int font_size() const { return fnt_sz; }
 private:
     string lab;    // label
-    Font fnt;
-    int fnt_sz;
+    Font fnt{fl_font()};
+    int fnt_sz{(fl_size() < 14) ? 14 : fl_size()};
 };
 
 //------------------------------------------------------------------------------
@@ -284,7 +284,13 @@ struct Circle : Shape {
 
     Point center() const ; 
     int radius() const { return r; }
-    void set_radius(int rr) { r=rr; }
+    // void set_radius(int rr) { r=rr; }
+    void set_radius(int rr){
+	// Maintain the center
+	set_point(0, Point{center().x - rr, center().y - rr});
+	r = rr;
+    }
+    
 private:
     int r;
 };
@@ -304,9 +310,19 @@ struct Ellipse : Shape {
     Point focus1() const { return Point(center().x+int(sqrt(double(w*w-h*h))),center().y); }
     Point focus2() const { return Point(center().x-int(sqrt(double(w*w-h*h))),center().y); }
 
-    void set_major(int ww) { w=ww; }
+    // void set_major(int ww) { w=ww; }
+    void set_major(int ww){
+	set_point(0, Point{center().x - ww, center().y - h});
+	w = ww;
+    }
+    
     int major() const { return w; }
-    void set_minor(int hh) { h=hh; }
+    // void set_minor(int hh) { h=hh; }
+    void set_minor(int hh){
+	set_point(0, Point{center().x - w, center().y - hh});
+	h = hh;
+    }
+    
     int minor() const { return h; }
 private:
     int w;
