@@ -1,0 +1,82 @@
+#+title: Chapter 13 Review
+#+author: Ulysses Carlos
+#+date: <2020-09-24 Thu>
+#+OPTIONS: toc:nil
+#+latex_class_options: [12pt]
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage{mathpazo}
+#+LaTeX_HEADER: \linespread{1.05}
+#+LaTeX_HEADER: \usepackage[scaled]{helvet}
+#+LaTeX_HEADER: \usepackage{courier}
+# ------------------------------------------------------------------------------
+# HTML
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+HTML_HEAD: <style>#content{max-width:1000px;}</style>
+#+HTML_HEAD: <style>p{max-width:800px;}</style>
+#+HTML_HEAD: <style>li{max-width:800px;}</style>
+# ------------------------------------------------------------------------------
+* Questions
+** Why don’t we “just” use a commercial or open-source graphics library directly?
+Using a graphics library directly would date the classes and functions used in the book.These classes/functions could change in the future and require a rewrite of the entire graphics section of the book.
+** About how many classes from our graphics interface library do you need to do simple graphics output?
+I would say that we would need around 15 different classes (The amount of subsections in the chapter)
+** What are the header files needed to use the graphics interface library?
+For the graphics interface library, we need
+- Simple\textunderscore window.h
+- Graph.h
+- Window.h
+- GUI.h
+- Point.h
+** What classes define closed shapes? 
+The classes Closed\textunderscore Polyline, Circle, Eclipse, Rectangle and Polygon define closed shapes.
+** Why don’t we just use Line for every shape?
+In some cases(Such as Polygon), there are additional requirements that Points have to follow that would over complicate the Line class and inflate the amount of code needed to support it.
+** What do the arguments to Point indicate?
+The arguments to Point indicate the location of the point in terms of a xy plane.
+** What are the components of Line\textunderscore style?
+The components of Line\textunderscore style are as follows:
+- Line thickness (In pixels)
+- Line style (Such as solid lines, dash lines, dot lines, etc)
+** What are the components of Color?
+The components of the Color class are as follows:
+- An enum Color\textunderscore Type that handles all colors that can be displayed and wraps around colors in FLTK
+- An enum Transparency which handles invisible/visible color
+- A Fl\textunderscore Color variable that holds the specific color
+- Functions that can toggle visiblity and transparency
+** What is RGB?
+RGB is a color scheme that supports a range of colors that can displayed on a computer screen. An unsigned byte is used for each color (Red, Green, Blue), making for a total of 2^24 different colors. For example, the color Mojave White has a RGB value of 0xFFDEAD, which is (255, 222, 173).
+** What are the differences between two Line s and a Lines containing two lines?
+The main difference is that a *Lines* object can hold a variable amount of *Line* and can support operations that affect all *lines* in the *Lines* object. The two *Line* objects are independent of each other and calling a method function one will not affect the other.
+** What properties can you set for every Shape?
+You can move the shape object, change its attributes(visibility, line color, fill color, Line\textunderscore style), 
+** How many sides does a Closed\textunderscore polyline defined by five Point s have?
+A *Closed\textunderscore polyline* does not check if any of the lines intersect, so you can have a variable amount of sides depending on what points you use.
+** What do you see if you define a Shape but don’t attach it to a Window?
+Since the shape isn't attached to a window, it isn't displayed in the window.
+** How does a Rectangle differ from a Polygon with four Point s (corners)?
+A Rectangle does not allow additional points to be added, unlike a Polygon, which will change the appearance of the shape. Also, a rectangle relies on height and width variables which aren't found in a polygon.
+** How does a Polygon differ from a Closed\textunderscore polyline?
+The main difference between a Polygon and a Closed\textunderscore polyline is that each point is check if it intersects with another in order to adhere to the definition of a polygon.
+** What’s on top: fill or outline?
+By default, outline is draw at the top.
+** Why didn’t we bother defining a Triangle class (after all, we did define Rectangle)?
+I suppose the main reason is that Triangles can take different forms (isosceles, scalene, equilateral to name a few) and simply having a class that takes a width and height in a constructor will only create a specific type of Triangle.
+** How do you move a Shape to another place in a Window?
+You use the move function, which moves the Shape to the right by a given x and y value.
+** How do you label a Shape with a line of text?
+You can create a Text object that can handles a single line of text.
+** What properties can you set for a text string in a Text ?
+You can set the font, text size, and the label associated with the text.
+** What is a font and why do we care?
+A font is a file that handles the appearance of a group of characters in a language. Different fonts are used for different purposes as some are more pleasing to the eye than others.
+** What is Vector\textunderscore ref for and how do we use it?
+A vector\textunderscore ref is an implementation of vector that can handle the objects of the Graphic library that a normal vector can't handle. You can use it by doing
+#+begin\textunderscore src c++
+Vector\textunderscore ref<Rectangle> vr;
++end\textunderscore src
+** What is the difference between a Circle and an Ellipse?
+The minor and major axes of a Circle are the same and each radius cannot be changed individually. 
+** What happens if you try to display an Image given a file name that doesn’t refer to a file containing an image?
+The window will display a Bad\textunderscore Image object, which is simply a space that states that the image with the filename could not be found.
+** How do you display part of an image?
+You can use the *set\textunderscore mask* function, which can crop the size of an image.
