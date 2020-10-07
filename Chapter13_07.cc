@@ -9,6 +9,7 @@
 
 #include "GUI/Simple_window.h"
 #include <sstream>
+
 using namespace Graph_lib;
 using Simple_Window = Simple_window;
 
@@ -73,7 +74,6 @@ int main(void){
     for (int i = 0; i < vrec.size(); i++)
 	win.attach(vrec[i]);
 
-    
     win.wait_for_button();
 
 }
