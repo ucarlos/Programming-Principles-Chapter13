@@ -72,6 +72,7 @@ int main(void){
 
     for (int i = 0; i < vrec.size(); i++)
 	win.attach(vrec[i]);
+
     
     win.wait_for_button();
 
