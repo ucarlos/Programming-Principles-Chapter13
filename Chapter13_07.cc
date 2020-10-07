@@ -8,6 +8,7 @@
  */
 
 #include "GUI/Simple_window.h"
+#include <sstream>
 using namespace Graph_lib;
 using Simple_Window = Simple_window;
 
@@ -57,9 +58,20 @@ void Box::draw_lines() const {
 }
 
 int main(void){
-    Simple_Window win{Point{0, 0}, 1600, 900, "Chapter13_07"};
+    Point tl{0, 0};
+    Simple_Window win{tl, 1280, 720, "Chapter13_07"};
     Vector_ref<Box> vrec;
+    std::stringstream ss;
     
+    for (int i = 0; i < 256; i++){
+	ss.str(""); ss << i;
+	vrec.push_back(new Box{Point{tl.x + (i % 20) * 50, tl.y + (i / 20) * 50},
+		50, 50, string{ss.str()}});
+	vrec[i].set_fill_color(Color(i));
+    }
+
+    for (int i = 0; i < vrec.size(); i++)
+	win.attach(vrec[i]);
     
     win.wait_for_button();
 
