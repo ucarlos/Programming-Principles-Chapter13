@@ -66,13 +66,13 @@ int main(void){
     cout << "Printing coordinates of Rectangle:\n";
     
     cout << "North: " << north(rect1) << endl
-	 << "South: " << south(rect1) << endl
-	 << "West: " << west(rect1) << endl
-	 << "East: " << east(rect1) << endl
-	 << "Northwest: " << northwest(rect1) << endl
-	 << "Northeast: " << northeast(rect1) << endl
-	 << "Southwest: " << southwest(rect1) << endl
-	 << "Southeast: " << southeast(rect1) << endl;
+		 << "South: " << south(rect1) << endl
+		 << "West: " << west(rect1) << endl
+		 << "East: " << east(rect1) << endl
+		 << "Northwest: " << northwest(rect1) << endl
+		 << "Northeast: " << northeast(rect1) << endl
+		 << "Southwest: " << southwest(rect1) << endl
+		 << "Southeast: " << southeast(rect1) << endl;
     
     win.attach(rect1);
     win.wait_for_button();

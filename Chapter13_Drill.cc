@@ -36,17 +36,17 @@ int main(void){
 
     // Place the 8 x 8 grid:
     for (int row = 0; row < 8; row++){
-	for (int col = 0; col < 8; col++){
-	    temp.x = tl.x + col * 100;
-	    temp.y = tl.y + row * 100;
-	    vec.push_back(new Rectangle{temp, 100, 100});
-	}
+		for (int col = 0; col < 8; col++){
+			temp.x = tl.x + col * 100;
+			temp.y = tl.y + row * 100;
+			vec.push_back(new Rectangle{temp, 100, 100});
+		}
     }
 
     // Make the left diagonal red:
     for (int i = 0; i < 8; i++){
-	vec[8 * i + i].set_color(Color::red);
-	vec[8 * i + i].set_fill_color(Color::red);
+		vec[8 * i + i].set_color(Color::red);
+		vec[8 * i + i].set_fill_color(Color::red);
     }
     // (0, 600)
     // (500, 0)
@@ -63,7 +63,7 @@ int main(void){
     
     Image image4{image4_point, "./rem_cat.jpg"};
     for (int i = 0; i < 64; i++)
-	win.attach(vec[i]);
+		win.attach(vec[i]);
 
     win.attach(image4);    
     win.attach(img1);
@@ -73,14 +73,14 @@ int main(void){
     
     unsigned value{1};
     while (win.wait_for_button()){
-	win.set_label("Please Press Ctrl-C to end program.");
-	// cerr << "Moving to " << image4_point.x + ((value % 8) * 100)
-	//      << ", "
-	//      << image4_point.y << "\n";
-	if (value++ % 8)
-	    image4.move(100,0);      
-	else
-	    image4.move(-7 * 100, 0);
+		win.set_label("Please Press Ctrl-C to end program.");
+		// cerr << "Moving to " << image4_point.x + ((value % 8) * 100)
+		//      << ", "
+		//      << image4_point.y << "\n";
+		if (value++ % 8)
+			image4.move(100,0);      
+		else
+			image4.move(-7 * 100, 0);
     }
 
 }

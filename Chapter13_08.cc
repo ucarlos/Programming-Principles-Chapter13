@@ -18,7 +18,7 @@ using Simple_Window = Simple_window;
 class Regular_Hexagon : public Shape {
 public:
     Regular_Hexagon(Point center, int distance):
-	radius{distance} { add(center); }
+		radius{distance} { add(center); }
     
     void draw_lines() const;
     
@@ -31,56 +31,56 @@ void Regular_Hexagon::draw_lines() const {
 
     double x, y, xx, yy; // Store the next two points for a line
     if (fill_color().visibility()){
-	x = radius * cos(angle);
-	y = radius * sin(angle);
+		x = radius * cos(angle);
+		y = radius * sin(angle);
 	
-	fl_line(point(0).x + radius, point(0).y,
-		point(0).x + x,
-		point(0).y + y);
+		fl_line(point(0).x + radius, point(0).y,
+				point(0).x + x,
+				point(0).y + y);
 	
-	// For the next four lines:
+		// For the next four lines:
 
-	for (int i = 1; i < 5; i++){
-	    xx = radius * cos((i + 1) * angle);
-	    yy = radius * sin((i + 1) * angle);
+		for (int i = 1; i < 5; i++){
+			xx = radius * cos((i + 1) * angle);
+			yy = radius * sin((i + 1) * angle);
 	    
-	    fl_line(point(0).x + x, point(0).y + y, point(0).x + xx,
-		    point(0).y + yy);
+			fl_line(point(0).x + x, point(0).y + y, point(0).x + xx,
+					point(0).y + yy);
 
-	    // Now update x and y for the next angle
-	    x = xx; y = yy;
-	}
+			// Now update x and y for the next angle
+			x = xx; y = yy;
+		}
 
-	fl_line(point(0).x + x, point(0).y + y,
-		point(0).x + radius, point(0).y);
+		fl_line(point(0).x + x, point(0).y + y,
+				point(0).x + radius, point(0).y);
     }
 
     if (color().visibility()){
-	x = radius * cos(angle);
-	y = radius * sin(angle);
+		x = radius * cos(angle);
+		y = radius * sin(angle);
 	
-	// Draw the first line
-	fl_line(point(0).x + radius, point(0).y,
-		point(0).x + x,
-		point(0).y + y);
+		// Draw the first line
+		fl_line(point(0).x + radius, point(0).y,
+				point(0).x + x,
+				point(0).y + y);
 	
-	// For the next four lines:
+		// For the next four lines:
 
-	for (int i = 1; i < 5; i++){
-	    // Compute coordinates for next angle
-	    xx = radius * cos((i + 1) * angle);
-	    yy = radius * sin((i + 1) * angle);
+		for (int i = 1; i < 5; i++){
+			// Compute coordinates for next angle
+			xx = radius * cos((i + 1) * angle);
+			yy = radius * sin((i + 1) * angle);
 	    
-	    fl_line(point(0).x + x, point(0).y + y, point(0).x + xx,
-		    point(0).y + yy);
+			fl_line(point(0).x + x, point(0).y + y, point(0).x + xx,
+					point(0).y + yy);
 
-	    // Now update x and y for the next angle
-	    x = xx; y = yy;
-	}
+			// Now update x and y for the next angle
+			x = xx; y = yy;
+		}
 
-	// Now draw the last line:
-	fl_line(point(0).x + x, point(0).y + y,
-		point(0).x + radius, point(0).y);	
+		// Now draw the last line:
+		fl_line(point(0).x + x, point(0).y + y,
+				point(0).x + radius, point(0).y);	
     }
 
     

@@ -19,16 +19,16 @@ using Simple_Window = Simple_window;
 class Arc : public Shape{
 public:
     Arc(Point pp, int radius, int aa): p{pp}, r{radius}, angle{aa} {
-	if (angle < 0)
-	    error("Cannot have a negative arc length.\n");
-	else
-	    add(p);
+		if (angle < 0)
+			error("Cannot have a negative arc length.\n");
+		else
+			add(p);
     }
 
     Point center(){ return {point(0).x, point(0).y}; }
     void set_radius(int rr){
-	set_point(0,Point{center().x - r + rr , center().y - r + rr});
-	r = rr;
+		set_point(0,Point{center().x - r + rr , center().y - r + rr});
+		r = rr;
     }
     
     void draw_lines() const;
@@ -42,7 +42,7 @@ private:
 
 void Arc::draw_lines() const {
     if (color().visibility())
-	fl_arc(point(0).x - r, point(0).y -r, r + r, r + r, 0, angle);
+		fl_arc(point(0).x - r, point(0).y -r, r + r, r + r, 0, angle);
 }
 
 int main(void){

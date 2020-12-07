@@ -165,7 +165,7 @@ int main(void){
 
 
     for (int i = 0; i < vec.size(); i++)
-	win.attach(vec[i]);
+		win.attach(vec[i]);
     
     win.attach(cir1);
     win.wait_for_button();

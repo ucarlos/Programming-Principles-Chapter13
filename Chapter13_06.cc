@@ -17,18 +17,18 @@ using Simple_Window = Simple_window;
 class Box : public Rectangle {
 public:
     Box(Point p, int w, int h, std::string t, int fs)
-	: Rectangle(p, w, h), width{w}, height{h}, font_size{fs},
-	  text{t} {
-	if (font_size < 1)
-	    error("Font size is negative.");
-	// Now check if the string will fit the box:
-	if ((width - t.size() / 2) + t.size() > width)
-	    error("Text will not fit the width of the box.");
+		: Rectangle(p, w, h), width{w}, height{h}, font_size{fs},
+		  text{t} {
+		if (font_size < 1)
+			error("Font size is negative.");
+		// Now check if the string will fit the box:
+		if ((width - t.size() / 2) + t.size() > width)
+			error("Text will not fit the width of the box.");
 
     }
 
     Box(Point p, int w, int h, std::string t):
-	Rectangle(p, w, h), width{w}, height{h}, text{t} { }
+		Rectangle(p, w, h), width{w}, height{h}, text{t} { }
 
     void draw_lines() const;
     void set_label(const string &str){ text = str; }
@@ -54,7 +54,7 @@ void Box::draw_lines() const {
     fl_font(fnt.as_int(), font_size);
 
     fl_draw(text.c_str(), point(0).x + ((width - text.size()) / 8),
-	    point(0).y + height / 2);
+			point(0).y + height / 2);
     fl_font(ofnt, osz);
 
 }

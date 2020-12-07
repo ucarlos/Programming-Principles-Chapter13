@@ -41,9 +41,9 @@ private:
 
 
 Box::Box(Point tl, Point br): upper_left{tl}, width{abs(tl.x - br.x)},
-			      height{abs(tl.y - br.y)},
-			      round_width{abs(tl.x - br.x) / 4},
-			      round_height{abs(tl.y - br.y) / 4}{
+							  height{abs(tl.y - br.y)},
+							  round_width{abs(tl.x - br.x) / 4},
+							  round_height{abs(tl.y - br.y) / 4}{
 
     add(tl);
 
@@ -51,10 +51,10 @@ Box::Box(Point tl, Point br): upper_left{tl}, width{abs(tl.x - br.x)},
 
 
 Box::Box(Point tl, int ww, int hh): upper_left{tl},
-				    width{ww},
-				    height{hh},
-				    round_width{ww / 4},
-				    round_height{hh / 4} { add(tl);}
+									width{ww},
+									height{hh},
+									round_width{ww / 4},
+									round_height{hh / 4} { add(tl);}
 
 
 
@@ -62,29 +62,29 @@ Box::Box(Point tl, int ww, int hh): upper_left{tl},
 void Box::draw_lines() const {
 
     if (color().visibility()){
-    // Arcs
-    // upper left arc
-    fl_arc(point(0).x , point(0).y, width/2, height/2, 90, 180);
-    // upper right arc
-    fl_arc(point(0).x + width/2, point(0).y, width/2, height/2, 0, 90);
-    // down right arc
-    fl_arc(point(0).x + width/2, point(0).y + height/2, width/2, height/2,
-           0, -90); 
-    // down left arc
-    fl_arc(point(0).x, point(0).y + height/2, width/2, height/2, 180, 270); 
-    // Lines
-    // top horizontal
-    fl_xyline(point(0).x + round_width, point(0).y,
-              point(0).x + width - round_width);
-    // right vertical
-    fl_yxline(point(0).x + width, point(0).y + round_height,
-              point(0).y + height - round_height);
-    // bottom horizontal
-    fl_xyline(point(0).x + round_width, point(0).y + height,
-              point(0).x + width - round_width);
-    // left vertical
-    fl_yxline(point(0).x, point(0).y + round_height, 
-              point(0).y + height - round_height);	
+		// Arcs
+		// upper left arc
+		fl_arc(point(0).x , point(0).y, width/2, height/2, 90, 180);
+		// upper right arc
+		fl_arc(point(0).x + width/2, point(0).y, width/2, height/2, 0, 90);
+		// down right arc
+		fl_arc(point(0).x + width/2, point(0).y + height/2, width/2, height/2,
+			   0, -90); 
+		// down left arc
+		fl_arc(point(0).x, point(0).y + height/2, width/2, height/2, 180, 270); 
+		// Lines
+		// top horizontal
+		fl_xyline(point(0).x + round_width, point(0).y,
+				  point(0).x + width - round_width);
+		// right vertical
+		fl_yxline(point(0).x + width, point(0).y + round_height,
+				  point(0).y + height - round_height);
+		// bottom horizontal
+		fl_xyline(point(0).x + round_width, point(0).y + height,
+				  point(0).x + width - round_width);
+		// left vertical
+		fl_yxline(point(0).x, point(0).y + round_height, 
+				  point(0).y + height - round_height);	
     }
 }
 
